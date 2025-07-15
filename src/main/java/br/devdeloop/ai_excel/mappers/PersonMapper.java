@@ -9,7 +9,7 @@ public class PersonMapper {
     public PersonDto arrayDataToDto(String arrayData[]) {
         return new PersonDto(
                 arrayData[0],
-                Integer.valueOf(arrayData[1]),
+                arrayData[1],
                 arrayData[2],
                 arrayData[3],
                 arrayData[4]

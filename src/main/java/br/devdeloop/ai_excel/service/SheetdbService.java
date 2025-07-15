@@ -36,7 +36,7 @@ public class SheetdbService {
                     "data": [
                         {
                             "nome": "%s",
-                            "idade": %d,
+                            "idade": "%s",
                             "cpf":"%s",
                             "uf": "%s",
                             "cidade": "%s"
