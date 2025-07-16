@@ -2,11 +2,14 @@ package br.devdeloop.ai_excel.controller;
 
 import br.devdeloop.ai_excel.dtos.PersonDto;
 import br.devdeloop.ai_excel.dtos.PromptRequest;
+import br.devdeloop.ai_excel.service.AiService;
 import br.devdeloop.ai_excel.service.SheetdbService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/sheetdb")

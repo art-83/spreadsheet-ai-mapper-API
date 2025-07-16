@@ -13,6 +13,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class AiService {
 
@@ -35,7 +38,7 @@ public class AiService {
     private String aiModel;
 
 
-    private final String template = "Make a CSV line, need to be on these sequence: nome, idade, cpf, uf e cidade. o csv tem apenas o conteúdo extraido do texto.";
+    private final String template = "Make a CSV line, need to be on these sequence: nome, idade, cpf, uf e cidade. The CSV just need to have the text content, if is more than 1 person, put a '|' to split it.";
 
     public HttpEntity<?> promptRequestBuilder(String prompt) {
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -69,17 +72,25 @@ public class AiService {
         ).getBody();
     }
 
-    public String[] getPersonDataArray(String prompt) throws JsonProcessingException {
+    public String[] getPersonDtoArray(String prompt) throws JsonProcessingException {
         JsonNode jsonNode = objectMapper
                 .readTree(getOpenAiResponse(prompt))
                 .path("choices")
                 .path(0)
                 .path("message")
                 .path("content");
-        return jsonNode.asText().split(",");
+        return jsonNode.asText().split("[|]");
     }
 
-    public PersonDto getPersonDtoByPrompt(String prompt) throws JsonProcessingException {
-        return personMapper.arrayDataToDto(getPersonDataArray(prompt));
+    public List<PersonDto> getPersonDtoListByPrompt(String prompt) throws JsonProcessingException {
+        List<PersonDto> personDtoList = new ArrayList<>();
+
+        String[] personDataArray = getPersonDtoArray(prompt);
+
+        for(String data : personDataArray) {
+            personDtoList.add(personMapper.arrayDataToDto(data.split("[,]")));
+        }
+
+        return personDtoList;
     }
 }
