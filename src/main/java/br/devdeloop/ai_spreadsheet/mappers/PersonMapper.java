@@ -1,7 +1,6 @@
-package br.devdeloop.ai_excel.mappers;
+package br.devdeloop.ai_spreadsheet.mappers;
 
-import br.devdeloop.ai_excel.dtos.PersonDto;
-import com.fasterxml.jackson.databind.JsonNode;
+import br.devdeloop.ai_spreadsheet.dtos.PersonDto;
 import org.springframework.stereotype.Component;
 
 @Component

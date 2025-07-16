@@ -1,4 +1,4 @@
-package br.devdeloop.ai_excel.dtos;
+package br.devdeloop.ai_spreadsheet.dtos;
 
 public record PromptRequest (
         String prompt

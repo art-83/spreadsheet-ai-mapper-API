@@ -1,4 +1,4 @@
-package br.devdeloop.ai_excel.security.configuration;
+package br.devdeloop.ai_spreadsheet.security.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package br.devdeloop.ai_excel.configuration;
+package br.devdeloop.ai_spreadsheet.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,7 +1,7 @@
-package br.devdeloop.ai_excel.service;
+package br.devdeloop.ai_spreadsheet.service;
 
-import br.devdeloop.ai_excel.dtos.PersonDto;
-import br.devdeloop.ai_excel.mappers.PersonMapper;
+import br.devdeloop.ai_spreadsheet.dtos.PersonDto;
+import br.devdeloop.ai_spreadsheet.mappers.PersonMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -72,7 +72,7 @@ public class AiService {
         ).getBody();
     }
 
-    public String[] getPersonDtoArray(String prompt) throws JsonProcessingException {
+    public String[] getJsonAiReponseContent(String prompt) throws JsonProcessingException {
         JsonNode jsonNode = objectMapper
                 .readTree(getOpenAiResponse(prompt))
                 .path("choices")
@@ -85,7 +85,7 @@ public class AiService {
     public List<PersonDto> getPersonDtoListByPrompt(String prompt) throws JsonProcessingException {
         List<PersonDto> personDtoList = new ArrayList<>();
 
-        String[] personDataArray = getPersonDtoArray(prompt);
+        String[] personDataArray = getJsonAiReponseContent(prompt);
 
         for(String data : personDataArray) {
             personDtoList.add(personMapper.arrayDataToDto(data.split("[,]")));
