@@ -101,6 +101,6 @@ No diretório da aplicação, execute no terminal:
 
 | Método | Endpoint                | Descrição                                                 | Corpo da Requisição                          |
 | ------ |-------------------------|-----------------------------------------------------------|----------------------------------------------|
-| `GET`  | `/open-ai/person-list`  | Gera e retorna uma lista de pessoas a partir de um prompt.| `Prompt Request JSON` no corpo da requisição |
+| `GET`  | `/open-ai/person-list`  | Gera e retorna uma lista de pessoas a partir de um prompt.| `Prompt Request JSON` |
 | `POST` | `/sheetdb/prompt-add`   | Adiciona pessoas na planilha a partir de um prompt.       | `Prompt Request JSON`                        |
 | `POST` | `/sheetdb/list-add`     | Adiciona diretamente uma lista de pessoas na planilha.    | `Person List JSON`                           |
