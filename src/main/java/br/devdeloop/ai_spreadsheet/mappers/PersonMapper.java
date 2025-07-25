@@ -11,7 +11,8 @@ public class PersonMapper {
                 arrayData[1],
                 arrayData[2],
                 arrayData[3],
-                arrayData[4]
+                arrayData[4],
+                arrayData[5]
         );
     }
 }

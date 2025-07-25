@@ -1,9 +1,10 @@
 package br.devdeloop.ai_spreadsheet.dtos;
 
 public record PersonDto(
-        String nome,
-        String idade,
-        String cpf,
-        String uf,
-        String cidade
+        String NOME,
+        String LINGUAGENS,
+        String FRAMEWORKS,
+        String DATABASES,
+        String CONHECIMENTOS,
+        String OBS
 ) {}

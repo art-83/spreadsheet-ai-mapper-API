@@ -38,7 +38,7 @@ public class AiService {
     private String aiModel;
 
 
-    private final String template = "Make a CSV line, need to be on these sequence: nome, idade, cpf, uf e cidade. The CSV just need to have the text content, if is more than 1 person, put a '|' to split it.";
+    private final String template = "Resuma a seguinte ficha técnica em uma linha CSV no seguinte formato: nome, linguagens, frameworks, banco de dados, conhecimentos gerais, descrição breve. Separe múltiplos itens com '-' e deixe campos vazios se não houver informação. Exemplo de entrada: Nome: Edson Alves Langs: Typescript, Python, Java. Framework: Express, Fastify, Nestjs, Spring Boot, Flask, Django. Database: Postgres, Sqlite, Firebase, MongoDB. Resutado esperado: Edson Alves, Typescript - Python - Java, Express - Fastify - Nestjs - Spring Boot - Flask - Django, Postgres - Sqlite - Firebase - MongoDB, , 'Descrição baseada nas infomações anteriores', ignore números aleatórios no texto, são os horários que as informações foram enviadas";
 
     public HttpEntity<?> promptRequestBuilder(String prompt) {
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -79,6 +79,7 @@ public class AiService {
                 .path(0)
                 .path("message")
                 .path("content");
+
         return jsonNode.asText().split("[|]");
     }
 

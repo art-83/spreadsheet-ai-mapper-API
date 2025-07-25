@@ -32,12 +32,11 @@ public class SheetdbService {
         httpHeaders.add("Accept", "application/json");
         httpHeaders.add("Content-Type", "application/json");
 
-        System.out.println(new HttpEntity<>(personDtoList, httpHeaders));
-
         return new HttpEntity<>(personDtoList, httpHeaders);
     }
 
     public ResponseEntity<?> addOnTableByPrompt(String prompt) throws JsonProcessingException {
+        System.out.println("teste: " + personPostRequestBuilder(prompt));
         restTemplate.exchange(
                 sheetDbUrl,
                 HttpMethod.POST,
