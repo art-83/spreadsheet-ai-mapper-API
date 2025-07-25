@@ -17,6 +17,7 @@ Now, the purpose of this application is to **map columns and automatically inser
 - Spring Web
 - Spring Security
 - Lombok
+- Docker / Docker-Compose
 
 ---
 
@@ -46,6 +47,7 @@ Now, the purpose of this application is to **map columns and automatically inser
 > [ ! **IMPORTANT** ! ]  
 > Be sure to create a `.env` file to be referenced by `docker-compose` with your **environment variables**.  
 > Don’t forget to **generate** a valid **API URL** from [SheetDB](https://sheetdb.io/) and add your **GitHub access token**.
+> The _Google Spreadsheet_ needs to have the columns "**NOME**", "**LINGUAGENS**", "**FRAMEWORKS**", "**DATABASES**", "**CONHECIMENTO**", "**OBS**"
 
 Expected `.env` file:
 ```
@@ -78,7 +80,7 @@ In the project directory, run:
 #### Prompt JSON (example):
 ```json
 {
-  "prompt": "name age=X cpf state city"
+  "prompt": "name languages frameworks databases (OBS is auto-generated)"
 }
 ```
 
@@ -86,18 +88,20 @@ In the project directory, run:
 ```json
 [
   {
-    "nome": "name-1",
-    "idade": "age-1",
-    "cpf": "cpf-1",
-    "uf": "state-1",
-    "cidade": "city-1"
+    "NOME": "Name",
+    "LINGUAGENS": "Programming languages",
+    "FRAMEWORKS": "Frameworks",
+    "DATABASES": "Data bases",
+    "CONHECIMENTO": "Skills",
+    "OBS": "Observations"
   },
   {
-    "nome": "name-n",
-    "idade": "age-n",
-    "cpf": "cpf-n",
-    "uf": "state-n",
-    "cidade": "city-n"
+    "NOME": "Name",
+    "LINGUAGENS": "Programming languages",
+    "FRAMEWORKS": "Frameworks",
+    "DATABASES": "Data bases",
+    "CONHECIMENTO": "Skills",
+    "OBS": "Observations"
   }
 ]
 ```

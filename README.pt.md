@@ -14,6 +14,7 @@ Esse foi um projeto rápido desenvolvido para reimaginar a aplicabilidade do pro
 - Spring Web
 - Spring Security
 - Lombok
+- Docker / Docker-Compose
 
 ---
 
@@ -38,7 +39,7 @@ Esse foi um projeto rápido desenvolvido para reimaginar a aplicabilidade do pro
 - Maven
 
 #### Executando:
-> [ ! **IMPORTANTE** ! ] Lembre-se de gerar um arquivo `.env` para o `docker-compose` referenciar as **variáveis de ambiente** Não se esqueça de **gerar** uma **_URL_ válida** da API do [SheetDB](https://sheetdb.io/) e adicionar teu **Token de acesso** do _GitHub_
+> [ ! **IMPORTANTE** ! ] Lembre-se de gerar um arquivo `.env` para o `docker-compose` referenciar as **variáveis de ambiente** Não se esqueça de **gerar** uma **_URL_ válida** da API do [SheetDB](https://sheetdb.io/) e adicionar teu **Token de acesso** do _GitHub_. A _Planilha do Google_ precisa ter as colunas: "**NOME**", "**LINGUAGENS**", "**FRAMEWORKS**", "**DATABASES**", "**CONHECIMENTO**", "**OBS**"
 
 Arquivo `.env` esperado:
 ```
@@ -68,39 +69,39 @@ No diretório da aplicação, execute no terminal:
 ### JSON Request esperados:
 
 #### Prompt JSON (example):
-```
+```json
 {
-    "prompt": "nome idade X cpf uf cidade"
+  "prompt": "name languages frameworks databases (OBS is auto-generated)"
 }
 ```
 
-
 #### Person List JSON (example):
-```
+```json
 [
-    {
-        "nome": "nome-1",
-        "idade": "idade-1",
-        "cpf": "cpf-1",
-        "uf": "uf-1",
-        "cidade": "cidade-1"
-    },
-    ...,
-    {
-        "nome": "nome-n",
-        "idade": "idade-n",
-        "cpf": "cpf-n",
-        "uf": "uf-n",
-        "cidade": "cidade-n"
-    }
+  {
+    "NOME": "Name",
+    "LINGUAGENS": "Programming languages",
+    "FRAMEWORKS": "Frameworks",
+    "DATABASES": "Data bases",
+    "CONHECIMENTO": "Skills",
+    "OBS": "Observations"
+  },
+  {
+    "NOME": "Name",
+    "LINGUAGENS": "Programming languages",
+    "FRAMEWORKS": "Frameworks",
+    "DATABASES": "Data bases",
+    "CONHECIMENTO": "Skills",
+    "OBS": "Observations"
+  }
 ]
 ```
 
 ---
 ### Endpoints
 
-| Método | Endpoint                | Descrição                                                 | Corpo da Requisição                          |
-| ------ |-------------------------|-----------------------------------------------------------|----------------------------------------------|
-| `GET`  | `/open-ai/person-list`  | Gera e retorna uma lista de pessoas a partir de um prompt.| `Prompt Request JSON` |
-| `POST` | `/sheetdb/prompt-add`   | Adiciona pessoas na planilha a partir de um prompt.       | `Prompt Request JSON`                        |
-| `POST` | `/sheetdb/list-add`     | Adiciona diretamente uma lista de pessoas na planilha.    | `Person List JSON`                           |
+| Método | Endpoint                | Descrição                                                 | Corpo da Requisição     |
+| ------ |-------------------------|-----------------------------------------------------------|-------------------------|
+| `GET`  | `/open-ai/person-list`  | Gera e retorna uma lista de pessoas a partir de um prompt.| `Prompt Request JSON`   |
+| `POST` | `/sheetdb/prompt-add`   | Adiciona pessoas na planilha a partir de um prompt.       | `Prompt Request JSON`   |
+| `POST` | `/sheetdb/list-add`     | Adiciona diretamente uma lista de pessoas na planilha.    | `Person List JSON`      |
